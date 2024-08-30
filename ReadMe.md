@@ -2,7 +2,7 @@
 
 clone the repo by writing in terminal
 
-`git clone https://github.com/ZiadHegazy/Loans-Banking-System.git  `
+`git clone https://github.com/ZiadHegazy/digisay-task.git  `
 
 open terminal in the root folder then write these commands
 
@@ -13,7 +13,7 @@ open terminal in the root folder then write these commands
 ## Installation Without Docker
 clone the repo by writing in terminal
 
-`git clone https://github.com/ZiadHegazy/Loans-Banking-System.git  `
+`git clone https://github.com/ZiadHegazy/digisay-task.git  `
 
 open new terminal for the frontend then
 
