@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create an EC2 instance.
+
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro  
+      ImageId: ami-066784287e358dad1  
+      KeyName: ziad
+      SecurityGroupIds:
+        - sg-0c1e237524b976b56  
+      SubnetId: subnet-0a6d4fc9aa80595e8  
+      IamInstanceProfile: arn:aws:iam::058264534551:instance-profile/digisay  
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8  
+      Tags:
+        - Key: Name
+          Value: digisay2
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          echo "Hello World" > /var/www/html/index.html
+  MySecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Allow SSH, HTTP, HTTPS, and Custom TCP access
+      VpcId: vpc-0621673417fd0218c 
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 8000
+          ToPort: 8000
+          CidrIp: 0.0.0.0/0
