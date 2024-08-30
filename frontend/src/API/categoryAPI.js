@@ -1,6 +1,5 @@
-const api=process.env.API?process.env.API:'http://localhost:8000';
+const api=process.env.REACT_APP_API?process.env.REACT_APP_API:'http://localhost:8000';
 export const createCategory=async (parentId)=>{
-    console.log(api);
     const response=await fetch(`${api}/createCategory`,{
         method:'POST',
         headers:{
@@ -12,7 +11,7 @@ export const createCategory=async (parentId)=>{
         
 }
 export const getCategories=async ()=>{
-    console.log(api);
+    console.log(process.env.REACT_APP_API);
     const response=await fetch(`${api}/getCategories`);
     return await response.json();
 }
